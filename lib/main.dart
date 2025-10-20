@@ -1,5 +1,6 @@
-import 'package:dashbord/pages/home_page.dart';
 import 'package:flutter/material.dart';
+import 'routes.dart'; // 👈 import it
+import 'package:dashbord/constant/colors.dart';
 
 void main() {
   runApp(const MyApp());
@@ -8,12 +9,17 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:  HomePage(),
+      title: 'Dashboard',
+      theme: ThemeData(
+        primaryColor: AppColors.primary,
+      ),
+      // 🚀 Use routes from routes.dart
+      initialRoute: AppRoutes.home,
+      routes: AppRoutes.routes,
     );
   }
 }

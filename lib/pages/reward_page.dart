@@ -6,16 +6,16 @@ import 'package:dotted_line/dotted_line.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import '../layouts/promo_notification_label.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+
+
+class RewardPage extends StatefulWidget {
+  const RewardPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<RewardPage> createState() => _RewardPage();
 }
 
-class _HomePageState extends State<HomePage> {
-  int _currentIndex = 0; // 👈 track selected nav item
-  final PageController controller = PageController(viewportFraction: 0.85);
+class _RewardPage extends State<RewardPage> {
 
   @override
   Widget build(BuildContext context) {
@@ -89,110 +89,7 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   children: [
                     // Balance section
-                    SizedBox(height: 9),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 8.0,
-                        vertical: 2,
-                      ),
-                      child: Container(
-                        padding: const EdgeInsets.all(12),
-                        //height: 100,
-                        decoration: BoxDecoration(
-                          color: AppColors.primary,
-                          borderRadius: BorderRadius.circular(13),
-                        ),
-
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    Icon(
-                                      Icons.verified_user,
-                                      color: Colors.white,
-                                      size: 14,
-                                    ),
-                                    SizedBox(width: 5),
-                                    Text(
-                                      'Available Balance',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                    SizedBox(width: 5),
-                                    Icon(
-                                      Icons.unpublished,
-                                      color: Colors.white,
-                                      size: 14,
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(height: 8),
-                                Text(
-                                  '₦19900 ',
-                                  style: TextStyle(
-                                    fontSize: 23,
-                                    fontWeight: FontWeight.w800,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    Text(
-                                      'Transaction History',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                    SizedBox(width: 2),
-
-                                    Icon(
-                                      Icons.chevron_right,
-                                      color: Colors.white,
-                                      size: 12,
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(height: 8),
-                                Container(
-                                  padding: const EdgeInsets.only(
-                                    top: 6.0,
-                                    right: 12.0,
-                                    left: 12.0,
-                                    bottom: 6.0,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(30),
-                                  ),
-                                  child: Text(
-                                    '+ Add money',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      color: AppColors.primary,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                    Text('RewardPage'),
 
                     // SizedBox(height:),
                     // # Last Transaction
@@ -229,9 +126,9 @@ class _HomePageState extends State<HomePage> {
                                     SizedBox(width: 12),
                                     Column(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.start,
+                                      MainAxisAlignment.start,
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           'Bunus from Data Purchase',
@@ -308,9 +205,9 @@ class _HomePageState extends State<HomePage> {
                                     SizedBox(width: 12),
                                     Column(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.start,
+                                      MainAxisAlignment.start,
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           'Bunus from Data Purchase',
@@ -568,61 +465,61 @@ class _HomePageState extends State<HomePage> {
                         horizontal: 8.0,
                       ),
                       child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(11),
-                          gradient: LinearGradient(
-                            begin: Alignment.centerLeft, // 👈
-                            end: Alignment.centerRight,
-                            stops: [0.7, 1.0], // 👈
-                            colors: [
-                              AppColors.secondary, // Green
-                              AppColors.secondary, // Light green
-                            ],
-                          ),
-                        ),
-                        padding: EdgeInsets.symmetric(
-                          vertical: 10.0,
-                          horizontal: 8,
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text(
-                              'One-Touch Loan!',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 15,
-                              ),
-                            ),
-                            SizedBox(height: 10),
-                            Row(
-                              children: [
-                                // Text('data'),
-                                Expanded(
-                                  child: DottedLine(
-                                    dashColor: AppColors.grey,
-                                    lineThickness: 2,
-                                  ),
-                                ),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(11),
+                            gradient: LinearGradient(
+                              begin: Alignment.centerLeft, // 👈
+                              end: Alignment.centerRight,
+                              stops: [0.7, 1.0], // 👈
+                              colors: [
+                                AppColors.secondary, // Green
+                                AppColors.secondary, // Light green
                               ],
                             ),
-                            SizedBox(height: 20),
-
-
-                            CarouselSlider(
-                              options: CarouselOptions(
-                                  viewportFraction: 1.0,
-                                  enableInfiniteScroll: true,
-                                  autoPlay: true,
-                                  autoPlayInterval: Duration(seconds: 10),
-                                  height: 70.0
+                          ),
+                          padding: EdgeInsets.symmetric(
+                            vertical: 10.0,
+                            horizontal: 8,
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text(
+                                'One-Touch Loan!',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 15,
+                                ),
                               ),
-                              items: [PromoNotificationLabel(), PromoNotificationLabel(), PromoNotificationLabel()]
-                            )
-                          ],
-                        )
+                              SizedBox(height: 10),
+                              Row(
+                                children: [
+                                  // Text('data'),
+                                  Expanded(
+                                    child: DottedLine(
+                                      dashColor: AppColors.grey,
+                                      lineThickness: 2,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 20),
+
+
+                              CarouselSlider(
+                                  options: CarouselOptions(
+                                      viewportFraction: 1.0,
+                                      enableInfiniteScroll: true,
+                                      autoPlay: true,
+                                      autoPlayInterval: Duration(seconds: 10),
+                                      height: 70.0
+                                  ),
+                                  items: [PromoNotificationLabel(), PromoNotificationLabel(), PromoNotificationLabel()]
+                              )
+                            ],
+                          )
 
                       ),
                     ),
@@ -637,7 +534,9 @@ class _HomePageState extends State<HomePage> {
       ),
 
       // 👇 Add your reusable bottom navigation bar
-      bottomNavigationBar: const CustomBottomNav(currentIndex: 0),
+
+      bottomNavigationBar: const CustomBottomNav(currentIndex: 1),
     );
   }
 }
+
