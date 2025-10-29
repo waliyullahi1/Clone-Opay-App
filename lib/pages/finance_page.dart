@@ -272,7 +272,7 @@ class _FinancePage extends State<FinancePage> {
                       ),
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Colors.white,
+
                           borderRadius: BorderRadius.circular(11),
                         ),
                         padding: EdgeInsets.symmetric(

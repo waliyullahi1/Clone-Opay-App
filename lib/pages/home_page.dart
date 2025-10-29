@@ -14,8 +14,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _currentIndex = 0; // 👈 track selected nav item
-  final PageController controller = PageController(viewportFraction: 0.85);
 
   @override
   Widget build(BuildContext context) {
@@ -136,7 +134,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 SizedBox(height: 8),
                                 Text(
-                                  '₦19900 ',
+                                  '₦199 00 ',
                                   style: TextStyle(
                                     fontSize: 23,
                                     fontWeight: FontWeight.w800,
