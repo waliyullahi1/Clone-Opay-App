@@ -1,79 +1,44 @@
 import 'package:dashbord/layouts/bottom_nav.dart';
 import 'package:flutter/material.dart';
 import 'package:dashbord/constant/colors.dart';
-import '../layouts/dashboard_items.dart';
-import 'package:dotted_line/dotted_line.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import '../layouts/promo_notification_label.dart';
+import 'package:dashbord/component/saving_page.dart';
 
-
-
+import '../component/Loans_pages.dart';
 class FinancePage extends StatefulWidget {
   const FinancePage({super.key});
 
   @override
-  State<FinancePage> createState() => _FinancePage();
+  State<FinancePage> createState() => _FinancePageState();
 }
 
-class _FinancePage extends State<FinancePage> {
+class _FinancePageState extends State<FinancePage> {
+  final PageController _controller = PageController();
+  int currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(70),
         child: Container(
           padding: const EdgeInsets.only(top: 14, left: 5, right: 4),
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            // boxShadow: [
-            //   BoxShadow(color: Colors.black26, blurRadius: 10),
-            // ],
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: SafeArea(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 6,
-                          vertical: 6,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Color(0xFF00B876),
-                          shape: BoxShape.circle,
-                        ),
-                        child: Icon(
-                          Icons.person,
-                          color: Colors.white,
-                          size: 18,
-                        ),
-                      ),
-                      SizedBox(width: 14),
-                      Text(
-                        "HI WALIYULLAHI",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 14,
-                        ),
-                      ),
-                    ],
+          color: Colors.white,
+          child: SafeArea(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                Text(
+                  "Finance",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 24,
+                    color: Colors.black,
                   ),
-                  Row(
-                    children: [
-                      Icon(Icons.headset_mic),
-                      SizedBox(width: 20),
-                      Icon(Icons.qr_code_scanner, color: Colors.grey[600]),
-                      SizedBox(width: 20),
-                      Icon(Icons.notifications_none),
-                    ],
-                  ),
-                ],
-              ),
+                ),
+                Icon(Icons.settings_outlined, color: Colors.black),
+              ],
             ),
           ),
         ),
@@ -82,461 +47,128 @@ class _FinancePage extends State<FinancePage> {
       body: SafeArea(
         child: ListView(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(.0),
-              child: Container(
-                color: Color(0xFFF8F8FB),
-                child: Column(
-                  children: [
-                    // Balance section
-                  Text('FinancePage'),
+            Container(
+              color: const Color(0xFFF8F8FB),
+              padding: const EdgeInsets.all(0),
+              child: Column(
+                children: [
+                  /// Balance
 
-                    // SizedBox(height:),
-                    // # Last Transaction
-                    Padding(
+
+
+
+                  /// ✅ Tab Bar + Sliding Indicator Animation
+                  SizedBox(
+                    height: 40,
+                    child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(11),
-                        ),
-                        padding: EdgeInsets.all(8.0),
-                        child: Column(
-                          children: [
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: AppColors.secondary,
-                                        borderRadius: BorderRadius.circular(
-                                          100,
-                                        ),
-                                      ),
-                                      padding: EdgeInsets.all(5.0),
-                                      child: Icon(
-                                        Icons.online_prediction,
-                                        size: 18,
-                                        color: Colors.green,
-                                      ),
-                                    ),
-                                    SizedBox(width: 12),
-                                    Column(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          'Bunus from Data Purchase',
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                        ),
-                                        Text(
-                                          'Oc 17th 17:16:16e',
-                                          style: TextStyle(
-                                            fontSize: 10,
-                                            color: AppColors.grey,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                Column(
-                                  children: [
-                                    Text(
-                                      "+₦100",
-                                      style: TextStyle(
-                                        color: AppColors.primary,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
+                      child: Stack(
+                        clipBehavior: Clip.none,
+                        alignment: Alignment.bottomLeft,
 
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: AppColors.secondary,
-                                        borderRadius: BorderRadius.circular(5),
-                                      ),
-                                      padding: EdgeInsets.symmetric(
-                                        vertical: 2,
-                                        horizontal: 8,
-                                      ),
-                                      child: Text(
-                                        "Successful",
-                                        style: TextStyle(
-                                          color: AppColors.primary,
-                                          fontSize: 8,
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 20),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: AppColors.secondary,
-                                        borderRadius: BorderRadius.circular(
-                                          100,
-                                        ),
-                                      ),
-                                      padding: EdgeInsets.all(5.0),
-                                      child: Icon(
-                                        Icons.online_prediction,
-                                        size: 18,
-                                        color: Colors.green,
-                                      ),
-                                    ),
-                                    SizedBox(width: 12),
-                                    Column(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          'Bunus from Data Purchase',
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                        ),
-                                        Text(
-                                          'Oc 17th 17:16:16e',
-                                          style: TextStyle(
-                                            fontSize: 10,
-                                            color: AppColors.grey,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                Column(
-                                  children: [
-                                    Text(
-                                      "+₦100",
-                                      style: TextStyle(
-                                        color: AppColors.primary,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: AppColors.secondary,
-                                        borderRadius: BorderRadius.circular(5),
-                                      ),
-                                      padding: EdgeInsets.symmetric(
-                                        vertical: 2,
-                                        horizontal: 8,
-                                      ),
-                                      child: Text(
-                                        "Successful",
-                                        style: TextStyle(
-                                          color: AppColors.primary,
-                                          fontSize: 8,
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 4,
-                        horizontal: 12.0,
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-
-                          borderRadius: BorderRadius.circular(11),
-                        ),
-                        padding: EdgeInsets.symmetric(
-                          vertical: 15.0,
-                          horizontal: 8,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            //toOpay
-                            Column(
-                              children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                    color: AppColors.secondary,
-                                    borderRadius: BorderRadius.circular(9),
-                                  ),
-                                  padding: EdgeInsets.all(7),
-                                  child: Icon(
-                                    Icons.view_agenda,
-                                    color: AppColors.primary,
-                                    size: 24,
-                                  ),
-                                ),
-                                SizedBox(height: 5),
-                                Text(
-                                  'To OPay',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 10,
-                                    color: AppColors.grey,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Column(
-                              children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                    color: AppColors.secondary,
-                                    borderRadius: BorderRadius.circular(9),
-                                  ),
-                                  padding: EdgeInsets.all(7),
-                                  child: Icon(
-                                    Icons.account_balance,
-                                    color: AppColors.primary,
-                                    size: 24,
-                                  ),
-                                ),
-                                SizedBox(height: 5),
-                                Text(
-                                  'To Bank',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 10,
-                                    color: AppColors.grey,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Column(
-                              children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                    color: AppColors.secondary,
-                                    borderRadius: BorderRadius.circular(9),
-                                  ),
-                                  padding: EdgeInsets.all(7),
-                                  child: Icon(
-                                    Icons.assessment,
-                                    color: AppColors.primary,
-                                    size: 24,
-                                  ),
-                                ),
-                                SizedBox(height: 5),
-                                Text(
-                                  'Withdraw',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 10,
-                                    color: AppColors.grey,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 4,
-                        horizontal: 8.0,
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(11),
-                        ),
-                        padding: EdgeInsets.symmetric(
-                          vertical: 15.0,
-                          horizontal: 8,
-                        ),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            //toOpay
-                            Image.asset('assets/images/email.png', scale: 15),
-                            SizedBox(width: 15),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Take Control, Stay Informed ',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 13,
-                                  ),
-                                ),
-                                Text(
-                                  'Add your Email,get the latest from OPay ',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 12,
-                                    color: AppColors.grey,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 4,
-                        horizontal: 8.0,
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(11),
-                        ),
-                        padding: EdgeInsets.all(8.0),
-                        child: GridView.count(
-                          crossAxisCount: 4,
-                          shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
-                          crossAxisSpacing: 12,
-                          // mainAxisSpacing: ,
-                          children: [
-                            DashboardItem(
-                              icon: Icons.lte_mobiledata,
-                              label: "Airtime",
-                            ),
-                            DashboardItem(
-                              icon: Icons.looks_two,
-                              label: 'Data Bundle',
-                            ),
-                            DashboardItem(
-                              icon: Icons.sports_basketball,
-                              label: 'Betting',
-                            ),
-                            DashboardItem(icon: Icons.live_tv, label: 'TV'),
-                            DashboardItem(
-                              icon: Icons.volunteer_activism,
-                              label: 'Financial',
-                            ),
-                            DashboardItem(
-                              icon: Icons.clean_hands,
-                              label: 'Loans',
-                            ),
-                            DashboardItem(
-                              icon: Icons.perm_contact_calendar,
-                              label: 'Check in',
-                            ),
-                            DashboardItem(
-                              icon: Icons.view_module,
-                              label: 'More',
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 4,
-                        horizontal: 8.0,
-                      ),
-                      child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(11),
-                            gradient: LinearGradient(
-                              begin: Alignment.centerLeft, // 👈
-                              end: Alignment.centerRight,
-                              stops: [0.7, 1.0], // 👈
-                              colors: [
-                                AppColors.secondary, // Green
-                                AppColors.secondary, // Light green
-                              ],
-                            ),
-                          ),
-                          padding: EdgeInsets.symmetric(
-                            vertical: 10.0,
-                            horizontal: 8,
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          /// Label Ro
+                          Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Text(
-                                'One-Touch Loan!',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 15,
+                              GestureDetector(
+                                onTap: () => _controller.animateToPage(
+                                  0,
+                                  duration: const Duration(milliseconds: 300),
+                                  curve: Curves.easeOut,
+                                ),
+                                child: Text(
+                                  "Savings",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: currentIndex == 0
+                                        ? FontWeight.bold
+                                        : FontWeight.normal,
+                                    color: currentIndex == 0
+                                        ? Colors.black
+                                        : Colors.grey,
+                                  ),
                                 ),
                               ),
-                              SizedBox(height: 10),
-                              Row(
-                                children: [
-                                  // Text('data'),
-                                  Expanded(
-                                    child: DottedLine(
-                                      dashColor: AppColors.grey,
-                                      lineThickness: 2,
-                                    ),
+                              SizedBox(width: 40,),
+                              GestureDetector(
+                                onTap: () => _controller.animateToPage(
+                                  1,
+                                  duration: const Duration(milliseconds: 300),
+                                  curve: Curves.easeOut,
+                                ),
+                                child: Text(
+                                  "Loans",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: currentIndex == 1
+                                        ? FontWeight.bold
+                                        : FontWeight.normal,
+                                    color: currentIndex == 1
+                                        ? Colors.black
+                                        : Colors.grey,
                                   ),
-                                ],
+                                ),
                               ),
-                              SizedBox(height: 20),
-
-
-                              CarouselSlider(
-                                  options: CarouselOptions(
-                                      viewportFraction: 1.0,
-                                      enableInfiniteScroll: true,
-                                      autoPlay: true,
-                                      autoPlayInterval: Duration(seconds: 10),
-                                      height: 70.0
-                                  ),
-                                  items: [PromoNotificationLabel(), PromoNotificationLabel(), PromoNotificationLabel()]
-                              )
                             ],
-                          )
+                          ),
 
+                          /// ✅ Smooth SlidinLine
+                          AnimatedBuilder(
+                            animation: _controller,
+                            builder: (_, __) {
+                              double pageOffset = _controller.hasClients
+                                  ? _controller.page ?? 0
+                                  : 0;
+
+                              /// Move underline smoothly: 0 → 1 page
+                              double leftPosition =
+                                  (screenWidth / 4.3) * pageOffset +
+                                      (screenWidth / 34- 4);
+
+                              return Positioned(
+                                bottom: -5,
+                                left: leftPosition,
+                                child: Container(
+                                  width: 40,
+                                  height: 3,
+                                  decoration: BoxDecoration(
+                                    color: AppColors.primary,
+                                    borderRadius: BorderRadius.circular(6),
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        ],
                       ),
                     ),
+                  ),
 
-                    //Icon Opay to Transfer To Bank, and Withdraw
-                  ],
-                ),
+                  const SizedBox(height: 20),
+
+                  /// ✅ Swipe Content
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height,
+                    width: double.infinity,
+                    child: PageView(
+                      controller: _controller,
+                      onPageChanged: (index) =>
+                          setState(() => currentIndex = index),
+                      children: [
+                        SingleChildScrollView(child: SavingPage()),
+                        SingleChildScrollView(child: LoansPages()),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
         ),
       ),
 
-      // 👇 Add your reusable bottom navigation bar
       bottomNavigationBar: const CustomBottomNav(currentIndex: 2),
     );
   }
 }
-
-

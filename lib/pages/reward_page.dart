@@ -1,11 +1,7 @@
 import 'package:dashbord/layouts/bottom_nav.dart';
 import 'package:flutter/material.dart';
 import 'package:dashbord/constant/colors.dart';
-import '../layouts/dashboard_items.dart';
 import 'package:dotted_line/dotted_line.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import '../layouts/promo_notification_label.dart';
-
 
 
 class RewardPage extends StatefulWidget {
@@ -901,7 +897,7 @@ class _RewardPage extends State<RewardPage> {
 
 
 
-                    //Icon Opay to Transfer To Bank, and Withdraw
+                    //Icon Opa to Transfer To Bank, and Withdraw
                   ],
                 ),
               ),

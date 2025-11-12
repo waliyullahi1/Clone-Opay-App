@@ -5,6 +5,8 @@ import 'package:dashbord/pages/reward_page.dart';
 import 'package:dashbord/pages/finance_page.dart';
 import 'package:dashbord/pages/card_page.dart';
 
+import '../pages/user_account.dart';
+
 class CustomBottomNav extends StatelessWidget {
   final int currentIndex;
 
@@ -41,6 +43,11 @@ class CustomBottomNav extends StatelessWidget {
           MaterialPageRoute(builder: (_) => const CardPage()),
         );
         break;
+      case 4:
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (_) => const UserAccountPage()),
+        );
     }
   }
 
@@ -78,6 +85,11 @@ class CustomBottomNav extends StatelessWidget {
           icon: Icon(Icons.credit_card_outlined),
           activeIcon: Icon(Icons.credit_card),
           label: "Card",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.supervised_user_circle_outlined),
+          activeIcon: Icon(Icons.supervised_user_circle),
+          label: "Me",
         ),
       ],
     );

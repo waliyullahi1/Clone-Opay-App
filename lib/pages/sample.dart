@@ -1,72 +1,40 @@
-import 'package:dashbord/layouts/bottom_nav.dart';
 import 'package:flutter/material.dart';
-import 'package:dashbord/constant/colors.dart';
 
-import '../component/physical_card.dart';
-import '../component/virtual_card_page.dart';
-
-class CardPage extends StatefulWidget {
-  const CardPage({super.key});
+class SimpleTabSlidePage extends StatefulWidget {
+  const SimpleTabSlidePage({super.key});
 
   @override
-  State<CardPage> createState() => _CardPageState();
+  State<SimpleTabSlidePage> createState() => _SimpleTabSlidePageState();
 }
 
-class _CardPageState extends State<CardPage> {
+class _SimpleTabSlidePageState extends State<SimpleTabSlidePage> {
   final PageController _pageController = PageController();
   int currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(70),
-        child: Container(
-          padding: const EdgeInsets.only(top: 14, left: 5, right: 4),
-          color: Colors.white,
-          child: SafeArea(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Text(
-                  "Card",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 24,
-                    color: Colors.black,
-                  ),
-                ),
-                Text('Q&A', style: TextStyle(
-                 color: AppColors.primary
-                ),)
+      appBar: AppBar(title: const Text("Animated Tabs"), centerTitle: true),
 
-              ],
-            ),
-          ),
-        ),
-      ),
-
-      // ✅ Fixed Section Below
       body: Column(
         children: [
-          /// ✅ Tab bar + underline
+          /// ✅ Tab titles + underline
           SizedBox(
             height: 50,
             child: LayoutBuilder(
               builder: (context, constraints) {
                 double tabWidth = constraints.maxWidth / 2;
-                double underlineWidth = 40;
-
 
                 return Stack(
                   children: [
                     Row(
                       children: [
-                        tabButton("Virtual Card", 0),
-                        tabButton("Physic Card", 1),
+                        tabButton("Settings", 0),
+                        tabButton("Loans", 1),
                       ],
                     ),
 
+                    /// ✅ Animated underline based on swipe position
                     AnimatedBuilder(
                       animation: _pageController,
                       builder: (context, child) {
@@ -76,11 +44,11 @@ class _CardPageState extends State<CardPage> {
 
                         return Positioned(
                           bottom: 0,
-                          left: (page * tabWidth) + (tabWidth / 2) - (underlineWidth / 2),
+                          left: page * tabWidth,
                           child: Container(
-                            width: 40,
+                            width: tabWidth,
                             height: 3,
-                            color: AppColors.primary,
+                            color: Colors.blue,
                           ),
                         );
                       },
@@ -90,22 +58,20 @@ class _CardPageState extends State<CardPage> {
               },
             ),
           ),
-          SizedBox(height: 12,),
-          /// ✅ PageView takes whole space
+
+          /// ✅ Swipe pages
           Expanded(
             child: PageView(
               controller: _pageController,
               onPageChanged: (index) => setState(() => currentIndex = index),
-              children: [
-                VirtualCardPage(),
-                PhysicalCardPage()
+              children: const [
+                Center(child: Text("Settings Page", style: TextStyle(fontSize: 24))),
+                Center(child: Text("Loans Page", style: TextStyle(fontSize: 24))),
               ],
             ),
-          ),
+          )
         ],
       ),
-
-      bottomNavigationBar: const CustomBottomNav(currentIndex: 3),
     );
   }
 
@@ -115,13 +81,13 @@ class _CardPageState extends State<CardPage> {
         onTap: () => _pageController.animateToPage(
           index,
           duration: const Duration(milliseconds: 300),
-          curve: Curves.easeOut,
+          curve: Curves.ease,
         ),
         child: Center(
           child: Text(
             text,
             style: TextStyle(
-              fontSize: 16,
+              fontSize: 17,
               fontWeight: currentIndex == index ? FontWeight.bold : FontWeight.normal,
               color: currentIndex == index ? Colors.black : Colors.grey,
             ),
