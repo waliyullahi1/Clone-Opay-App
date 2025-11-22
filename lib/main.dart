@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         primaryColor: AppColors.primary,
       ),
       // 🚀 Use routes from routes.dart
-      initialRoute: AppRoutes.home,
+      initialRoute: AppRoutes.login,
       routes: AppRoutes.routes,
     );
   }
