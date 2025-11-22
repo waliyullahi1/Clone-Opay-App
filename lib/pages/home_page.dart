@@ -1,10 +1,13 @@
 import 'package:dashbord/layouts/bottom_nav.dart';
+import 'package:dashbord/pages/withdraw_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dashbord/constant/colors.dart';
 import '../layouts/dashboard_items.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import '../layouts/promo_notification_label.dart';
+import 'bank_transfer.dart';
+import 'opay_transfer.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -384,81 +387,107 @@ class _HomePageState extends State<HomePage> {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             //toOpay
-                            Column(
-                              children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                    color: AppColors.secondary,
-                                    borderRadius: BorderRadius.circular(9),
+
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => OpayTransfer()),
+                                );
+                              },
+                              child: Column(
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: AppColors.secondary,
+                                      borderRadius: BorderRadius.circular(9),
+                                    ),
+                                    padding: const EdgeInsets.all(7),
+                                    child: Icon(
+                                        Icons.view_agenda,
+                                      color: AppColors.primary,
+                                      size: 24,
+                                    ),
                                   ),
-                                  padding: EdgeInsets.all(7),
-                                  child: Icon(
-                                    Icons.view_agenda,
-                                    color: AppColors.primary,
-                                    size: 24,
+                                  const SizedBox(height: 5),
+                                  Text(
+                                    'To OPay',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 10,
+                                      color: AppColors.grey,
+                                    ),
                                   ),
-                                ),
-                                SizedBox(height: 5),
-                                Text(
-                                  'To OPay',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 10,
-                                    color: AppColors.grey,
-                                  ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                            Column(
-                              children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                    color: AppColors.secondary,
-                                    borderRadius: BorderRadius.circular(9),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => BankTransfer()),
+                                );
+                              },
+                              child: Column(
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: AppColors.secondary,
+                                      borderRadius: BorderRadius.circular(9),
+                                    ),
+                                    padding: const EdgeInsets.all(7),
+                                    child: Icon(
+                                      Icons.account_balance,
+                                      color: AppColors.primary,
+                                      size: 24,
+                                    ),
                                   ),
-                                  padding: EdgeInsets.all(7),
-                                  child: Icon(
-                                    Icons.account_balance,
-                                    color: AppColors.primary,
-                                    size: 24,
+                                  const SizedBox(height: 5),
+                                  Text(
+                                    'To Bank',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 10,
+                                      color: AppColors.grey,
+                                    ),
                                   ),
-                                ),
-                                SizedBox(height: 5),
-                                Text(
-                                  'To Bank',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 10,
-                                    color: AppColors.grey,
-                                  ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                            Column(
-                              children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                    color: AppColors.secondary,
-                                    borderRadius: BorderRadius.circular(9),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => WithdrawPage()),
+                                );
+                              },
+                              child: Column(
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: AppColors.secondary,
+                                      borderRadius: BorderRadius.circular(9),
+                                    ),
+                                    padding: const EdgeInsets.all(7),
+                                    child: Icon(
+                                      Icons.assessment,
+                                      color: AppColors.primary,
+                                      size: 24,
+                                    ),
                                   ),
-                                  padding: EdgeInsets.all(7),
-                                  child: Icon(
-                                    Icons.assessment,
-                                    color: AppColors.primary,
-                                    size: 24,
+                                  const SizedBox(height: 5),
+                                  Text(
+                                    'Withdraw',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 10,
+                                      color: AppColors.grey,
+                                    ),
                                   ),
-                                ),
-                                SizedBox(height: 5),
-                                Text(
-                                  'Withdraw',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 10,
-                                    color: AppColors.grey,
-                                  ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
+
                           ],
                         ),
                       ),
